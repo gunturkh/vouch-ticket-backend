@@ -12,27 +12,21 @@ require('dotenv-extended').load({
   
   module.exports = {
     development: {
-      username: process.env.DEVELOPMENT_DB_USERNAME,
-      password: process.env.DEVELOPMENT_DB_PASSWORD,
-      database: process.env.DEVELOPMENT_DB_NAME,
-      host: process.env.DEVELOPMENT_DB_HOST,
-      port: process.env.DEVELOPMENT_DB_PORT,
-      dialect: process.env.DEVELOPMENT_DB_DIALECT
+      user: process.env.DEVELOPMENT_MONGO_USER,
+      pass: process.env.DEVELOPMENT_MONGO_PASS,
+      db: process.env.DEVELOPMENT_MONGO_DATABASE,
+      host: process.env.DEVELOPMENT_MONGO_HOST
     },
     test: {
-      username: process.env.TEST_DB_USERNAME,
-      password: process.env.TEST_DB_PASSWORD,
-      database: process.env.TEST_DB_NAME,
-      host: process.env.TEST_DB_HOST,
-      port: process.env.TEST_DB_PORT,
-      dialect: process.env.TEST_DB_DIALECT
+      user: process.env.TEST_MONGO_USER,
+      pass: process.env.TEST_MONGO_PASS,
+      db: process.env.TEST_MONGO_DATABASE,
+      host: process.env.TEST_MONGO_HOST
     },
     production: {
-      username: process.env.PRODUCTION_DB_USERNAME,
-      password: process.env.PRODUCTION_DB_PASSWORD,
-      database: process.env.PRODUCTION_DB_NAME,
-      host: process.env.PRODUCTION_DB_HOST,
-      port: process.env.PRODUCTION_DB_PORT,
-      dialect: process.env.PRODUCTION_DB_DIALECT
+      user: process.env.PRODUCTION_MONGO_USER,
+      pass: process.env.PRODUCTION_MONGO_PASS,
+      db: process.env.PRODUCTION_MONGO_DATABASE,
+      host: process.env.PRODUCTION_MONGO_HOST
     }
   }
