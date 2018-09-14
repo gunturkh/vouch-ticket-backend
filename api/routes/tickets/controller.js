@@ -14,13 +14,18 @@ const controller ={
     },
 
     findById: async (req,res,next) => {
-        Ticket.findById(req.body._id)
+        Ticket.findById({_id: req.body._id})
             .then(tickets => {
-                res.status(200).send(tickets)
+                if (tickets.length > 0)
+                    {res.status(200).send(tickets)}
+                else 
+                {
+                return res.status(200).send({message : "ID Not Found"})
+                }
             })
             .catch(error => 
                 res.status(400).send({
-                    message: error
+                    message: "ID Not Found"
                 })
             )
     },
