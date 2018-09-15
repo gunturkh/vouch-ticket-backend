@@ -10,6 +10,8 @@ const ticketsRouter = require('./api/routes/tickets');
 
 const app = express();
 
+//to include momentjs on local and use it on jade
+app.locals.moment = require('moment');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

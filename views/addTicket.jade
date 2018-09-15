@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+
+        h1.display-4.m-b-2 Create New Ticket
+        //- div
+        form(action='/tickets',method='post')
+          div.form-group
+            label(for='name') Ticket Name
+            input.form-control(id='name',type='text',value='',placeholder='Ticket Name',name='name')
+          //- div.form-group
+          //-   label(for='status') Ticket Status
+          //-   input.form-control(id='status',type='text',value='',placeholder='Ticket Status',name='status')
+          div.form-group
+            label(for='log') Ticket Log
+            input.form-control(id='log',type='text',value='',placeholder='Ticket Log',name='log')
+          
+          button.btn.btn-primary(type='submit') Submit Ticket

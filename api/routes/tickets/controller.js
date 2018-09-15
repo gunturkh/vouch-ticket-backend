@@ -2,9 +2,12 @@ const Ticket = require('./model')
 
 const controller ={
     get: async (req,res,next) => {
+        
+        
         Ticket.find().sort({_id: -1})
-            .then(tickets => {
-                res.status(200).send(tickets)
+        .then(tickets => {
+            // res.status(200).send(tickets)
+            res.render('lists', { title: tickets })
             })
             .catch(error => 
                 res.status(400).send({
@@ -14,18 +17,14 @@ const controller ={
     },
 
     findById: async (req,res,next) => {
-        Ticket.findById({_id: req.body._id})
+        Ticket.findById(req.params.id)
             .then(tickets => {
-                if (tickets.length > 0)
-                    {res.status(200).send(tickets)}
-                else 
-                {
-                return res.status(200).send({message : "ID Not Found"})
-                }
+                // res.status(200).send(tickets)
+                res.render('updateTicket', { title: tickets.name, id: tickets._id, name: tickets.name  })
             })
             .catch(error => 
                 res.status(400).send({
-                    message: "ID Not Found"
+                    message: `ID ${req.params.id} Not Found`
                 })
             )
     },
@@ -51,29 +50,29 @@ const controller ={
     add: async (req, res, next) => {
         const newTicket = {
             name : req.body.name,
-            status: req.body.status,
+            status: "open",
             log: req.body.log
         }
 
-        const ticket = await Ticket.create(newTicket)
+        console.log(req.body);
+        
 
-        res.status(201).send({
-            ticket
-        })
+        const ticket = await Ticket.create(newTicket)
+        res.redirect('/tickets')
+        // res.status(201).send({
+        //     ticket
+        // })
     },
 
     deleteById: async (req, res, next) => {
         
-        Ticket.findByIdAndDelete({ _id: req.body._id })
+        Ticket.findByIdAndRemove(req.params.id)
         .then(ticket =>{ 
-            res.status(200).send({
-                message: `Delete Ticket by ID Success`
-            }
-            )
+            res.redirect('/tickets')
         })
         .catch(error => {
             res.status(400).send({
-                message: "Delete Ticket by ID Failed"
+                message: error
             })
         })
     },
@@ -85,12 +84,9 @@ const controller ={
             status : req.body.status,
             log: req.body.log
         }
-        Ticket.findByIdAndUpdate({_id: req.body._id}, update)
+        Ticket.findByIdAndUpdate(req.params.id, update)
             .then(ticket =>{ 
-                res.status(200).send({
-                    message: ticket
-                }
-                )
+                res.redirect('/tickets')
             })
             .catch(error => {
                 res.status(400).send({

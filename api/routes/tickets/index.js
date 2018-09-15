@@ -7,8 +7,8 @@ const controller = require('./controller')
 router.get('/', controller.get)
 router.post('/', controller.add)
 router.get('/status', controller.findByStatus)
-router.get('/:id', controller.findById)
-router.put('/:id', controller.updateById)
-router.delete('/:id', controller.deleteById)
+router.get('/find/:id', controller.findById)
+router.get('/delete/:id', controller.deleteById)
+router.post('/update/:id', controller.updateById)
 
 module.exports = router

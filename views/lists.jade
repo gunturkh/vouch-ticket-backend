@@ -1,0 +1,62 @@
+extends layout
+
+block content
+    .main.container
+      .row
+        div.col-md-12
+        - var tickets = title
+        h1 Ticket Lists
+        div.col-md-12
+          table.table-responsive.table
+            thead
+              tr
+                th Tickets Name
+                th Log
+                th Status
+                th Date
+                th Edit Ticket
+            tbody
+              for item in tickets
+                tr
+                  td
+                    h5= item.name
+                  td
+                    h5= item.log
+                  td
+                    h5= item.status
+                  td 
+                    h5= moment(item._id.getTimestamp()).format('lll')
+                  td 
+                    form(name="update", action="/tickets/find/#{item._id}")
+                      button.btn-primary(type="submit") Update
+                    form(name="delete", action="tickets/delete/#{item._id}", method="delete")
+                      button.btn-primary(type="submit") Delete
+
+        
+            
+
+
+
+
+
+          //- .col-md-12
+            div.card-body(id= item._id)
+            h3.card-title= item.name
+            span.text-muted= item.status
+            h5.text-muted= moment(item._id.getTimestamp()).format('lll')
+            p.card-text= item.log
+              //- a(href="/tickets/delete/#{item._id}") Delete
+            form(name="delete", action="tickets/delete/#{item._id}", method="delete")
+              //- input(type="hidden", name="_method", value="delete")
+              button(type="submit") Delete
+              //- button.btn.btn-primary Edit Ticket
+              //- form(method='POST', action='/tickets/#{item._id}/delete?_method=DELETE')
+              //- button.btn.btn-primary(type='submit') Delete
+              //- button.btn.btn-primary  Delete Ticket
+          //- ul
+          //-   div
+          //-     li
+          //-       //- p= item._id
+          //-       p= item.name
+          //-       p= item.status
+          //-       p= item.log

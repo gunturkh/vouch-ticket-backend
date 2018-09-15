@@ -1,7 +1,30 @@
 doctype html
-html
+html(lang="en")
   head
-    title= title
+    title Vouch Ticket Management
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    link(href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css", rel="stylesheet")
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+
+
+  nav.navbar.navbar-default( role="navigation" )
+    .navbar-header
+        button.navbar-toggle.collapsed( type="button", data-toggle="collapse", data-target="#navbar-inverse", aria-expanded="false", aria-controls="navbar")
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        a.navbar-brand(href="#") Vouch Ticket Management
+ 
+    #navbar-inverse.collapse.navbar-collapse
+        ul.nav.navbar-nav
+            li: a( href="/tickets") Ticket Lists
+            li: a( href="/tickets/add" ) Add New Ticket
+            li: a( href="https://github.com/gunturkh/vouch-ticket-backend" ) Github
+            
+
+  body(style="padding-bottom:10rem;")
+    //- .container
+    script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
+    script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
     block content
