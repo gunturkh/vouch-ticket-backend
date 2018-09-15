@@ -21,7 +21,14 @@ html(lang="en")
             li: a( href="/tickets") Ticket Lists
             li: a( href="/tickets/add" ) Add New Ticket
             li: a( href="https://github.com/gunturkh/vouch-ticket-backend" ) Github
-            
+            li.dropdown
+                a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) Filter Ticket 
+                    span.caret
+                ul.dropdown-menu( role="filter" )
+                    li: a( href="/tickets/status/open" ) Open
+                    li: a( href="/tickets/status/active" ) Active
+                    li: a( href="/tickets/status/failed" ) Failed
+                    li: a( href="/tickets/status/closed" ) Closed
 
   body(style="padding-bottom:10rem;")
     //- .container

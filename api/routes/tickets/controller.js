@@ -24,20 +24,16 @@ const controller ={
             })
             .catch(error => 
                 res.status(400).send({
-                    message: `ID ${req.params.id} Not Found`
+                    message: `ID ${req.body.id} Not Found`
                 })
             )
     },
 
     findByStatus: async (req,res,next) => {
-        Ticket.find({ status: req.body.status})
+        Ticket.find({ status: req.params.id}).sort({_id: -1})
         .then(tickets => {
-            if (tickets.length > 0 )
-            {res.status(200).send(tickets)}
-            else 
-            {
-                return res.status(200).send({message : "Status Not Found"})
-            }
+            res.render('lists', { title: tickets })
+            // res.status(200).send(tickets)
         })
         .catch(error => 
             res.status(400).send({
