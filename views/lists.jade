@@ -3,18 +3,19 @@ extends layout
 block content
     .main.container
       .row
-        div.col-md-12
+        //- div.col-md-auto
         - var tickets = title
         h1 Ticket Lists
-        div.col-md-12
-          table.table-responsive.table
-            thead
+        div.col-md-auto
+          table.table-responsive.table.table-hover
+            thead.thead-dark
               tr
-                th Tickets Name
-                th Log
-                th Status
-                th Date
-                th Edit Ticket
+                th(scope="col") Tickets Name
+                th(scope="col") Log
+                th(scope="col") Status
+                th(scope="col") Date
+                th(scope="col") Edit Ticket
+                th(scope="col") Delete Ticket
             tbody
               for item in tickets
                 tr
@@ -28,9 +29,10 @@ block content
                     h5= moment(item._id.getTimestamp()).format('lll')
                   td 
                     form(name="update", action="/tickets/find/#{item._id}")
-                      button.btn-primary(type="submit") Update
+                      button.btn-primary.btn-sm.btn-block(type="submit") Update
+                  td
                     form(name="delete", action="tickets/delete/#{item._id}", method="delete")
-                      button.btn-primary(type="submit") Delete
+                      button.btn-primary.btn-sm.btn-block(type="submit") Delete
 
         
             

@@ -3,8 +3,9 @@ html(lang="en")
   head
     title Vouch Ticket Management
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    meta( name='description', content='Vouch Ticket Management' )
+    //- link(rel='stylesheet', href='/stylesheets/style.css')
     link(href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css", rel="stylesheet")
-    link(rel='stylesheet', href='/stylesheets/style.css')
 
 
   nav.navbar.navbar-default( role="navigation" )
@@ -20,7 +21,6 @@ html(lang="en")
         ul.nav.navbar-nav
             li: a( href="/tickets") Ticket Lists
             li: a( href="/tickets/add" ) Add New Ticket
-            li: a( href="https://github.com/gunturkh/vouch-ticket-backend" ) Github
             li.dropdown
                 a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) Filter Ticket 
                     span.caret
@@ -29,6 +29,7 @@ html(lang="en")
                     li: a( href="/tickets/status/active" ) Active
                     li: a( href="/tickets/status/failed" ) Failed
                     li: a( href="/tickets/status/closed" ) Closed
+            li: a( href="https://github.com/gunturkh/vouch-ticket-backend" ) Github
 
   body(style="padding-bottom:10rem;")
     //- .container
