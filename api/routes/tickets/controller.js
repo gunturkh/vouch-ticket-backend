@@ -6,7 +6,6 @@ const controller ={
         
         Ticket.find().sort({_id: -1})
         .then(tickets => {
-            // res.status(200).send(tickets)
             res.render('lists', { title: tickets })
             })
             .catch(error => 
@@ -19,7 +18,6 @@ const controller ={
     findById: async (req,res,next) => {
         Ticket.findById(req.params.id)
             .then(tickets => {
-                // res.status(200).send(tickets)
                 res.render('updateTicket', { title: tickets.name, id: tickets._id, name: tickets.name  })
             })
             .catch(error => 
@@ -33,7 +31,6 @@ const controller ={
         Ticket.find({ status: req.params.id}).sort({_id: -1})
         .then(tickets => {
             res.render('lists', { title: tickets })
-            // res.status(200).send(tickets)
         })
         .catch(error => 
             res.status(400).send({
@@ -55,9 +52,6 @@ const controller ={
 
         const ticket = await Ticket.create(newTicket)
         res.redirect('/tickets')
-        // res.status(201).send({
-        //     ticket
-        // })
     },
 
     deleteById: async (req, res, next) => {

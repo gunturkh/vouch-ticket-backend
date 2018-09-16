@@ -7,8 +7,6 @@ block content
       .col-md-6.col-md-offset-3
 
         h1.display-4.m-b-2 Update Ticket
-        h3= id
-        //- div
         form(action='/tickets/update/#{id}',method='post')
           input(type="hidden", name="id", value="#{id}")
           div.form-group

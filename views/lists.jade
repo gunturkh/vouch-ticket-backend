@@ -33,32 +33,3 @@ block content
                   td
                     form(name="delete", action="tickets/delete/#{item._id}", method="delete")
                       button.btn-primary.btn-sm.btn-block(type="submit") Delete
-
-        
-            
-
-
-
-
-
-          //- .col-md-12
-            div.card-body(id= item._id)
-            h3.card-title= item.name
-            span.text-muted= item.status
-            h5.text-muted= moment(item._id.getTimestamp()).format('lll')
-            p.card-text= item.log
-              //- a(href="/tickets/delete/#{item._id}") Delete
-            form(name="delete", action="tickets/delete/#{item._id}", method="delete")
-              //- input(type="hidden", name="_method", value="delete")
-              button(type="submit") Delete
-              //- button.btn.btn-primary Edit Ticket
-              //- form(method='POST', action='/tickets/#{item._id}/delete?_method=DELETE')
-              //- button.btn.btn-primary(type='submit') Delete
-              //- button.btn.btn-primary  Delete Ticket
-          //- ul
-          //-   div
-          //-     li
-          //-       //- p= item._id
-          //-       p= item.name
-          //-       p= item.status
-          //-       p= item.log
